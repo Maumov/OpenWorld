@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
         Vector3 center = transform.position + transform.up + transform.forward;
         Vector3 halfextends = new Vector3(1f, 1f, 1f);
         Collider[] colliders = Physics.OverlapBox(center, halfextends, transform.rotation, layerMask);
-        Debug.Log(colliders.Length);
+        //Debug.Log(colliders.Length);
         foreach(Collider c in colliders) {
             Ray ray = new Ray();
             ray.origin = transform.position + transform.up;

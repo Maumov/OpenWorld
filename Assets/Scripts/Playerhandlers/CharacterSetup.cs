@@ -56,9 +56,16 @@ public class CharacterSetup : MonoBehaviour
             characters[8].SetActive(true);
             break;
         }
+
+        SetUI(playerSetup.playerIndex);
+
     }
-
-    
-  
-
+    void SetUI(int index) {
+        PlayerUIStatsController[] playerUIs = FindObjectsOfType<PlayerUIStatsController>();
+        foreach(PlayerUIStatsController ui in playerUIs) {
+            if(ui.playerIndex == index) {
+                ui.SetStats(GetComponent<Stats>());
+            }
+        }
+    }
 }
