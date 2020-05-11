@@ -9,6 +9,9 @@ public class EnemyAttack : MonoBehaviour
     public LayerMask layerMask;
 
     public GameObject hitParticle;
+
+    public GameObject missilePrefab;
+    public Transform spawnPosition;
     private void Start() {
         stats = GetComponent<Stats>();
     }
@@ -16,7 +19,7 @@ public class EnemyAttack : MonoBehaviour
         Vector3 center = transform.position + transform.up + transform.forward;
         Vector3 halfextends = new Vector3(1f, 1f, 1f);
         Collider[] colliders = Physics.OverlapBox(center, halfextends, transform.rotation, layerMask);
-        //Debug.Log(colliders.Length);
+        Debug.Log(colliders.Length);
         foreach(Collider c in colliders) {
             Ray ray = new Ray();
             ray.origin = transform.position + transform.up;
@@ -26,9 +29,15 @@ public class EnemyAttack : MonoBehaviour
                 IHitBox hitbox = hit.collider.GetComponent<IHitBox>();
                 if(hitbox != null) {
                     Instantiate(hitParticle, hit.point, Quaternion.Euler(hit.normal));
-                    hitbox.GetDamage(baseDamage + stats.currentDamage, transform.forward);
+                    hitbox.GetDamage(baseDamage + stats.currentDamage, transform.forward, stats);
                 }
             }
         }
+    }
+
+    public void ExecuteShoot() {
+        GameObject missile = Instantiate(missilePrefab, spawnPosition.position, spawnPosition.rotation);
+        missile.GetComponent<Missile>().damage = baseDamage + stats.currentDamage;
+        missile.GetComponent<Missile>().stats = stats;
     }
 }

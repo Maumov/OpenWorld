@@ -57,7 +57,7 @@ public class WarriorAttack : Skill
                 IHitBox hitbox = hit.collider.GetComponent<IHitBox>();
                 if(hitbox != null) {
                     Instantiate(swordHitParticle, hit.point, Quaternion.Euler(hit.normal));
-                    hitbox.GetDamage(BaseDamage + stats.currentDamage, transform.forward);
+                    hitbox.GetDamage(BaseDamage + stats.currentDamage, transform.forward, stats);
                 }
             }
         }

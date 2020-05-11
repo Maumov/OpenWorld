@@ -9,6 +9,7 @@ public class Missile : MonoBehaviour
     public float movementSpeed;
 
     public ParticleSystem missileHitParticle;
+    public Stats stats;
     private void Start() {
         Destroy(gameObject,lifeTime);
     }
@@ -23,7 +24,7 @@ public class Missile : MonoBehaviour
         Instantiate(missileHitParticle, transform.position, transform.rotation);
         IHitBox hitbox = other.GetComponent<IHitBox>();
         if(hitbox != null) {
-            hitbox.GetDamage(damage , transform.forward);
+            hitbox.GetDamage(damage , transform.forward, stats);
         }
         Destroy(gameObject);
     }

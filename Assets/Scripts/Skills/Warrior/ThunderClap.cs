@@ -16,7 +16,7 @@ public class ThunderClap : Skill
             if(c.transform != transform.parent) {
                 IHitBox hitbox = c.GetComponent<IHitBox>();
                 if(hitbox != null) {
-                    hitbox.GetDamage(baseDamage + stats.currentDamage, transform.up);
+                    hitbox.GetDamage(baseDamage + stats.currentDamage, transform.up, stats);
                 }
                 IBuffsAndEffects buffsAndEffects = c.GetComponent<IBuffsAndEffects>();
                 if(buffsAndEffects != null) {

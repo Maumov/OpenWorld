@@ -13,6 +13,7 @@ public class EnemyBase : MonoBehaviour, IAttack, IHitBox
     SkinnedMeshRenderer rend;
 
     EnemyBaseAnimationControl animationControl;
+    bool inLineOfSight;
     private void Start() {
 
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -27,6 +28,7 @@ public class EnemyBase : MonoBehaviour, IAttack, IHitBox
         if(targeting.hasTarget()) {
             target = targeting.currentTarget.stats.gameObject;
             distanceFromTarget = Vector3.Distance(transform.position, target.transform.position);
+            LineOfSightCheck();
             animationControl.InCombat(true);
         } else {
             animationControl.InCombat(false);
@@ -37,11 +39,30 @@ public class EnemyBase : MonoBehaviour, IAttack, IHitBox
 
 
     void SetFSMValues() {
-        FSMAnimator.SetBool("hasTarget", target != null? true : false);
+        FSMAnimator.SetBool("hasTarget", target != null ? true : false);
         FSMAnimator.SetFloat("distanceFromTarget", distanceFromTarget);
+        FSMAnimator.SetBool("InLOS", inLineOfSight);
     }
 
-    
+    public LayerMask layerMask;
+    void LineOfSightCheck() {
+        if(targeting.hasTarget()) {
+            Ray ray = new Ray();
+            RaycastHit hit;
+            ray.origin = transform.position + transform.up;
+            ray.direction = target.transform.position - transform.position;
+            ray.direction = new Vector3(ray.direction.x, 0f, ray.direction.z);
+            if(Physics.Raycast(ray, out hit, 100f, layerMask)) {
+                if(hit.transform.gameObject.Equals(target)) {
+                    inLineOfSight = true;
+                } else {
+                    inLineOfSight = false;
+                }
+            }
+        }
+    }
+
+
     public float timeBetweenAttacks;
     float nextAttack = 0;
     public void Attack() {
@@ -52,7 +73,7 @@ public class EnemyBase : MonoBehaviour, IAttack, IHitBox
         LookAtTarget();
     }
 
-    
+
     public void LookAtTarget() {
         if(target != null) {
             Vector3 position = transform.position + (target.transform.position - transform.position);
@@ -66,7 +87,13 @@ public class EnemyBase : MonoBehaviour, IAttack, IHitBox
         targeting.enabled = false;
     }
 
-    public void GetDamage(float damage, Vector3 direction) {
+    public void GetDamage(float damage, Vector3 direction, Stats damageOwner) {
+        if(!targeting.hasTarget()) {
+            Target t = new Target();
+            t.stats = damageOwner;
+            targeting.currentTarget = t;
+        }
+        
         GetComponent<Stats>().GetDamage(damage);
         StartCoroutine(flash(direction));
     }

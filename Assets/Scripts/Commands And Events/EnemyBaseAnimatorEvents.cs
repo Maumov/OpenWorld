@@ -11,4 +11,7 @@ public class EnemyBaseAnimatorEvents : AnimatorEvents
     public void Attack() {
         enemyAttack.ExecuteAttack();
     }
+    public void Shoot() {
+        enemyAttack.ExecuteShoot();
+    }
 }

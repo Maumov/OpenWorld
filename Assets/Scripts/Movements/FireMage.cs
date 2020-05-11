@@ -41,7 +41,7 @@ public class FireMage : CharacterMovement, IHitBox
         }
     }
     Renderer rend;
-    public void GetDamage(float damage, Vector3 direction) {
+    public void GetDamage(float damage, Vector3 direction, Stats damageOwner) {
         GetComponent<Stats>().GetDamage(damage);
         StartCoroutine(flash());
     }

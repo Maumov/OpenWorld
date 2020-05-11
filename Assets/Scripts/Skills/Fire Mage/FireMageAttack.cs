@@ -54,6 +54,7 @@ public class FireMageAttack : Skill
         GameObject missile = Instantiate(missilePrefab, spawnPosition.position, spawnPosition.rotation);
         missile.GetComponent<Missile>().damage = BaseDamage + stats.currentDamage;
         missile.GetComponent<Missile>().movementSpeed = missileSpeed;
+        missile.GetComponent<Missile>().stats = stats;
     }
 
     
