@@ -26,4 +26,5 @@ public class PlayerSetup
     public int playerIndex;
     public string characterName;
     public string characterClass;
+    public string controller;
 }

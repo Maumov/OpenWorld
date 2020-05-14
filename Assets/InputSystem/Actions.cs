@@ -333,7 +333,7 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""id"": ""933f6837-cf06-4fdc-b583-cd1d02affeb3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=1,behavior=1)""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Back"",
@@ -341,7 +341,7 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""id"": ""73e80060-3fc5-4fd9-81f9-de5533d81088"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=1,behavior=1)""
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
