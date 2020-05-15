@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class JoinPlayersManually : MonoBehaviour
 {
-    public static int amountOfPlayers = 1;
+    public static int amountOfPlayers = 0;
     public PlayerInputManager playerInputManager;
 
     public List<PlayerConfigurationUI> playerUI;
@@ -75,7 +75,7 @@ public class JoinPlayersManually : MonoBehaviour
     }
 
 
-    void OnPlayerJoined(PlayerInput playerInput) {
+    public void OnPlayerJoined(PlayerInput playerInput) {
         int playerIndex = playerInput.playerIndex;
         PlayerConfiguration pc = playerInput.GetComponent<PlayerConfiguration>();
 
@@ -83,6 +83,7 @@ public class JoinPlayersManually : MonoBehaviour
         newPlayer.characterClass = characters[0];
         newPlayer.characterName = "";
         newPlayer.playerIndex = playerIndex;
+        newPlayer.controller = playerInput.currentControlScheme;
         FindObjectOfType<PlayersManager>().AddNewPlayer(newPlayer);
         pc.characterSelectionText = playerUI[playerIndex];
         pc.playerIndex = playerIndex;
