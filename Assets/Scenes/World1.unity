@@ -21609,16 +21609,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8028092815662763313, guid: 4a770c27bcdb2c14b8392c25241b2514,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.57853776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028092815662763313, guid: 4a770c27bcdb2c14b8392c25241b2514,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.81565565
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028092815662763313, guid: 4a770c27bcdb2c14b8392c25241b2514,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 70.69601
       objectReference: {fileID: 0}
@@ -21676,16 +21666,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028092817036008353, guid: 4a770c27bcdb2c14b8392c25241b2514,
-        type: 3}
-      propertyPath: cameraPosition.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028092817036008353, guid: 4a770c27bcdb2c14b8392c25241b2514,
-        type: 3}
-      propertyPath: cameraPosition.y
-      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8028092817036008358, guid: 4a770c27bcdb2c14b8392c25241b2514,
         type: 3}
