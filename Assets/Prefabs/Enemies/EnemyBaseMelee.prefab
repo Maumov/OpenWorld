@@ -157,7 +157,7 @@ MonoBehaviour:
   target: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 23808
   timeBetweenAttacks: 2
 --- !u!114 &4639423141379701940
 MonoBehaviour:
