@@ -42,8 +42,8 @@ public class SpawnPlayersTest : MonoBehaviour
             CharacterSetup cs = playerInput.GetComponent<CharacterSetup>();
             cs.SetupCharacter(players.AllPlayers[playerInput.playerIndex], spawnPositions[playerInput.playerIndex]);
         } else {
-            CharacterSetup cs = playerInput.GetComponent<CharacterSetup>();
-            cs.SetupCharacter(playerToSpawn, spawnPositions[0]);
+            playerInput.transform.position = spawnPositions[0].position;
+            //            cs.SetupCharacter(playerToSpawn, );
         }
         
 

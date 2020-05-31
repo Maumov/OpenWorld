@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "e2645b74-5268-40c0-af1d-4b36feb39c1f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "201a1f80-1728-4409-9037-05c5b17c8d84",
@@ -50,7 +58,7 @@
                 {
                     "name": "Arrow Keys",
                     "id": "9d3a26df-21cb-45f3-8353-6a1031bc68ec",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -105,7 +113,7 @@
                 {
                     "name": "WASD Keys",
                     "id": "158e2823-a059-4b20-a8c0-12e7ec0015fd",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -160,7 +168,7 @@
                 {
                     "name": "Left Joystick",
                     "id": "82b2566f-04e4-4562-b0aa-71d00220a9af",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -297,6 +305,72 @@
                     "processors": "",
                     "groups": "XboxController",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Right Joystick",
+                    "id": "615ff9ad-efad-4727-8ee2-97c2f32333e4",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "30cd1aac-b2e7-4fb1-93da-766d4042d981",
+                    "path": "<XInputController>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxController",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "3b783536-a3f6-4c72-a818-51b5129f7e67",
+                    "path": "<XInputController>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxController",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "4bfd56d8-bcd0-4a0e-85ed-a2fa7632a6a6",
+                    "path": "<XInputController>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxController",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "e68cfe60-f6ad-4982-bacc-31c7cb6f30ba",
+                    "path": "<XInputController>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxController",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8f43586b-94ee-4784-a575-d5173f49efb1",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard And Mouse",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -558,7 +632,7 @@
                 {
                     "name": "Arrow Keys",
                     "id": "265c3ef1-5e61-4e89-9dc9-1dadef8c97af",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -613,7 +687,7 @@
                 {
                     "name": "WASD Keys",
                     "id": "34837155-e3a4-44b7-af66-8a0f2305499b",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -979,7 +1053,7 @@
                 {
                     "name": "Arrow Keys",
                     "id": "09d4b2c9-8c0b-4beb-ae9e-ef28ba7eccab",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1034,7 +1108,7 @@
                 {
                     "name": "WASD Keys",
                     "id": "b67460a4-2ea4-4218-83ad-cdd3ec995fa2",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

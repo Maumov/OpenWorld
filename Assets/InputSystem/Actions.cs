@@ -27,6 +27,14 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""e2645b74-5268-40c0-af1d-4b36feb39c1f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""201a1f80-1728-4409-9037-05c5b17c8d84"",
@@ -63,7 +71,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Arrow Keys"",
                     ""id"": ""9d3a26df-21cb-45f3-8353-6a1031bc68ec"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -118,7 +126,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""WASD Keys"",
                     ""id"": ""158e2823-a059-4b20-a8c0-12e7ec0015fd"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -173,7 +181,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Left Joystick"",
                     ""id"": ""82b2566f-04e4-4562-b0aa-71d00220a9af"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -310,6 +318,72 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""XboxController"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Right Joystick"",
+                    ""id"": ""615ff9ad-efad-4727-8ee2-97c2f32333e4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""30cd1aac-b2e7-4fb1-93da-766d4042d981"",
+                    ""path"": ""<XInputController>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XboxController"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""3b783536-a3f6-4c72-a818-51b5129f7e67"",
+                    ""path"": ""<XInputController>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XboxController"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""4bfd56d8-bcd0-4a0e-85ed-a2fa7632a6a6"",
+                    ""path"": ""<XInputController>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XboxController"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""e68cfe60-f6ad-4982-bacc-31c7cb6f30ba"",
+                    ""path"": ""<XInputController>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XboxController"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f43586b-94ee-4784-a575-d5173f49efb1"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard And Mouse"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -571,7 +645,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Arrow Keys"",
                     ""id"": ""265c3ef1-5e61-4e89-9dc9-1dadef8c97af"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -626,7 +700,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""WASD Keys"",
                     ""id"": ""34837155-e3a4-44b7-af66-8a0f2305499b"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -992,7 +1066,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Arrow Keys"",
                     ""id"": ""09d4b2c9-8c0b-4beb-ae9e-ef28ba7eccab"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1047,7 +1121,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""WASD Keys"",
                     ""id"": ""b67460a4-2ea4-4218-83ad-cdd3ec995fa2"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1366,6 +1440,7 @@ public class @Actions : IInputActionCollection, IDisposable
         // CharacterBase
         m_CharacterBase = asset.FindActionMap("CharacterBase", throwIfNotFound: true);
         m_CharacterBase_Movement = m_CharacterBase.FindAction("Movement", throwIfNotFound: true);
+        m_CharacterBase_Look = m_CharacterBase.FindAction("Look", throwIfNotFound: true);
         m_CharacterBase_Attack = m_CharacterBase.FindAction("Attack", throwIfNotFound: true);
         m_CharacterBase_Defend = m_CharacterBase.FindAction("Defend", throwIfNotFound: true);
         m_CharacterBase_Jump = m_CharacterBase.FindAction("Jump", throwIfNotFound: true);
@@ -1447,6 +1522,7 @@ public class @Actions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CharacterBase;
     private ICharacterBaseActions m_CharacterBaseActionsCallbackInterface;
     private readonly InputAction m_CharacterBase_Movement;
+    private readonly InputAction m_CharacterBase_Look;
     private readonly InputAction m_CharacterBase_Attack;
     private readonly InputAction m_CharacterBase_Defend;
     private readonly InputAction m_CharacterBase_Jump;
@@ -1456,6 +1532,7 @@ public class @Actions : IInputActionCollection, IDisposable
         private @Actions m_Wrapper;
         public CharacterBaseActions(@Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_CharacterBase_Movement;
+        public InputAction @Look => m_Wrapper.m_CharacterBase_Look;
         public InputAction @Attack => m_Wrapper.m_CharacterBase_Attack;
         public InputAction @Defend => m_Wrapper.m_CharacterBase_Defend;
         public InputAction @Jump => m_Wrapper.m_CharacterBase_Jump;
@@ -1472,6 +1549,9 @@ public class @Actions : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnMovement;
+                @Look.started -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnLook;
                 @Attack.started -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_CharacterBaseActionsCallbackInterface.OnAttack;
@@ -1491,6 +1571,9 @@ public class @Actions : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
@@ -1771,6 +1854,7 @@ public class @Actions : IInputActionCollection, IDisposable
     public interface ICharacterBaseActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDefend(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
