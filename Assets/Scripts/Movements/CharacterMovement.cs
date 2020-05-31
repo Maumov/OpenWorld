@@ -23,10 +23,10 @@ public class CharacterMovement : MonoBehaviour
     public Animator anim;
     public float jumpSpeed = 10f;
     public float gravity = 20f;
-    CharacterController characterController;
+    protected CharacterController characterController;
     protected Vector3 correctedDirection;
     protected Vector3 locomotionDirection;
-    float locomotionY = 0f;
+    protected float locomotionY = 0f;
     //bool landed = false;
     // Start is called before the first frame update
     public virtual void Start()
