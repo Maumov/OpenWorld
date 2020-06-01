@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonCamera : CameraController
 {
-    public Cinemachine.CinemachineFreeLook freeLook;
+    public Cinemachine.CinemachineStateDrivenCamera freeLook;
     
     public GameObject target;
     public Vector3 cameraPosition;

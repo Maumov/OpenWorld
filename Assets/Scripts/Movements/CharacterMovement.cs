@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
-    bool inCombat;
+    protected bool inCombat;
     float outOfCombatTime;
 
     public void InCombat(bool val) {
@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     protected Vector2 direction;
-    float jump;
+    protected float jump;
     
     protected CameraController cameraController;
     protected Stats stats;
@@ -138,6 +138,8 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+   
+
     public virtual void Locomotion() {
         Vector3 finalDirection = Vector3.zero;
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded") && !anim.IsInTransition(0)) {
@@ -151,6 +153,9 @@ public class CharacterMovement : MonoBehaviour
 
     public virtual void SetAnimatorValues() {
         anim.SetFloat("Speed", direction.magnitude);
+        anim.SetFloat("Horizontal", direction.x);
+        anim.SetFloat("Vertical", direction.y);
+        
         anim.SetBool("InCombat", inCombat);
 
         if((stats.status & StatusEffect.Stunned) != 0) {
@@ -170,7 +175,7 @@ public class CharacterMovement : MonoBehaviour
             anim.SetFloat("AnimationSpeedMultiplier", 1f);
         }
     }
-        public bool isGrounded() {
+    public bool isGrounded() {
         //RaycastHit hit;
         Ray ray = new Ray();
         ray.origin = transform.position;
