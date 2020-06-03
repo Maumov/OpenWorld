@@ -26983,7 +26983,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6106680667303647108}
-        m_MethodName: Look
+        m_MethodName: RightJoyStick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27026,6 +27026,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0310713e-3c74-4830-a46b-4f424eaceb1a
     m_ActionName: ThirdPerson/Aim Or Target[/Mouse/rightButton,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ResetCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c8ef185-1683-4721-9f9e-b4ace91729dd
+    m_ActionName: ThirdPerson/ResetCamera[/XInputControllerWindows/rightStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XboxController
   m_DefaultActionMap: ThirdPerson

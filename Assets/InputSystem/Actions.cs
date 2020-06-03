@@ -448,6 +448,14 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""ResetCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""9c8ef185-1683-4721-9f9e-b4ace91729dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -707,7 +715,7 @@ public class @Actions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Right Joystick"",
                     ""id"": ""8f54ac34-c9cc-4238-8160-b9905ac36679"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -789,6 +797,17 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""XboxController"",
                     ""action"": ""Aim Or Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d64cde73-577e-4d74-8640-9f8c3a017777"",
+                    ""path"": ""<XInputController>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XboxController"",
+                    ""action"": ""ResetCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1859,6 +1878,7 @@ public class @Actions : IInputActionCollection, IDisposable
         m_ThirdPerson_Jump = m_ThirdPerson.FindAction("Jump", throwIfNotFound: true);
         m_ThirdPerson_Interact = m_ThirdPerson.FindAction("Interact", throwIfNotFound: true);
         m_ThirdPerson_AimOrTarget = m_ThirdPerson.FindAction("Aim Or Target", throwIfNotFound: true);
+        m_ThirdPerson_ResetCamera = m_ThirdPerson.FindAction("ResetCamera", throwIfNotFound: true);
         // CharacterSelection
         m_CharacterSelection = asset.FindActionMap("CharacterSelection", throwIfNotFound: true);
         m_CharacterSelection_BrowseCharacters = m_CharacterSelection.FindAction("BrowseCharacters", throwIfNotFound: true);
@@ -2015,6 +2035,7 @@ public class @Actions : IInputActionCollection, IDisposable
     private readonly InputAction m_ThirdPerson_Jump;
     private readonly InputAction m_ThirdPerson_Interact;
     private readonly InputAction m_ThirdPerson_AimOrTarget;
+    private readonly InputAction m_ThirdPerson_ResetCamera;
     public struct ThirdPersonActions
     {
         private @Actions m_Wrapper;
@@ -2026,6 +2047,7 @@ public class @Actions : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_ThirdPerson_Jump;
         public InputAction @Interact => m_Wrapper.m_ThirdPerson_Interact;
         public InputAction @AimOrTarget => m_Wrapper.m_ThirdPerson_AimOrTarget;
+        public InputAction @ResetCamera => m_Wrapper.m_ThirdPerson_ResetCamera;
         public InputActionMap Get() { return m_Wrapper.m_ThirdPerson; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2056,6 +2078,9 @@ public class @Actions : IInputActionCollection, IDisposable
                 @AimOrTarget.started -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnAimOrTarget;
                 @AimOrTarget.performed -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnAimOrTarget;
                 @AimOrTarget.canceled -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnAimOrTarget;
+                @ResetCamera.started -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnResetCamera;
+                @ResetCamera.performed -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnResetCamera;
+                @ResetCamera.canceled -= m_Wrapper.m_ThirdPersonActionsCallbackInterface.OnResetCamera;
             }
             m_Wrapper.m_ThirdPersonActionsCallbackInterface = instance;
             if (instance != null)
@@ -2081,6 +2106,9 @@ public class @Actions : IInputActionCollection, IDisposable
                 @AimOrTarget.started += instance.OnAimOrTarget;
                 @AimOrTarget.performed += instance.OnAimOrTarget;
                 @AimOrTarget.canceled += instance.OnAimOrTarget;
+                @ResetCamera.started += instance.OnResetCamera;
+                @ResetCamera.performed += instance.OnResetCamera;
+                @ResetCamera.canceled += instance.OnResetCamera;
             }
         }
     }
@@ -2364,6 +2392,7 @@ public class @Actions : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnAimOrTarget(InputAction.CallbackContext context);
+        void OnResetCamera(InputAction.CallbackContext context);
     }
     public interface ICharacterSelectionActions
     {

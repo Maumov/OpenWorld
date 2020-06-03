@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CineMachineEvents : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class CineMachineEvents : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frameou
+
     void Update()
     {
         
     }
 
-    public void ReCenter() {
-        freeLook.m_XAxis.Value = stateDriven.m_Follow.rotation.eulerAngles.y;
-        //freeLook.m_YAxis.Value = 0.5f;
+    public void StartMain() {
+        freeLook.m_YAxis.Value = 0.5f;
+    }
+
+    public void StartAim() {
+        freeLook.m_YAxis.Value = 0.5f;
     }
 }
