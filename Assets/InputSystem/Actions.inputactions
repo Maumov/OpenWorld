@@ -435,6 +435,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "ResetCamera",
+                    "type": "Value",
+                    "id": "9c8ef185-1683-4721-9f9e-b4ace91729dd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -694,7 +702,7 @@
                 {
                     "name": "Right Joystick",
                     "id": "8f54ac34-c9cc-4238-8160-b9905ac36679",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -776,6 +784,17 @@
                     "processors": "",
                     "groups": "XboxController",
                     "action": "Aim Or Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d64cde73-577e-4d74-8640-9f8c3a017777",
+                    "path": "<XInputController>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxController",
+                    "action": "ResetCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

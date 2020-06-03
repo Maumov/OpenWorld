@@ -30,4 +30,5 @@ public class ThirdPersonCamera : CameraController
             freeLook.LookAt = target.transform;
         }
     }
+
 }

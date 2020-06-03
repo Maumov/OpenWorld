@@ -38,7 +38,7 @@ public class ThirdPersonMovement : CharacterMovement
             fl.m_XAxis.m_InputAxisValue = direction2.x;
             fl.m_YAxis.m_InputAxisValue = direction2.y;
         }
-        
+        //direction2 = Vector2.zero;
     }
     public override void Update() {
         OutOfCombat();
@@ -53,9 +53,7 @@ public class ThirdPersonMovement : CharacterMovement
         if(!stats.isAlive) {
             return;
         }
-        if(aim == 1f) {
-            transform.Rotate(0f, direction2.x * 300f * Time.deltaTime, 0f);
-        } else {
+        if(aim == 0f) {
             if(direction.magnitude > 0f) {
                 float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + cameraController.transform.eulerAngles.y;
 
@@ -68,6 +66,9 @@ public class ThirdPersonMovement : CharacterMovement
             } else {
                 correctedDirection = Vector3.zero;
             }
+
+        } else {
+            transform.Rotate(0f, direction2.x * 300f * Time.deltaTime, 0f);
         }
     }
     public override void Move() {
@@ -93,27 +94,27 @@ public class ThirdPersonMovement : CharacterMovement
                         anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
                         locomotionY = jumpSpeed;
                         anim.SetTrigger("Jump");
-                        anim.SetBool("Landed", false);
+                        //anim.SetBool("Landed", false);
                     }
                     jump = 0;
                 } else {
                     if(anim.GetCurrentAnimatorStateInfo(0).IsName("Falling") && !anim.IsInTransition(0)) {
-                        anim.SetTrigger("Landed");
+                        //anim.SetTrigger("Landed");
                     }
 
                 }
             } else {
                 //is falling
                 if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Falling") && !anim.IsInTransition(0)) {
-                    anim.SetTrigger("Falling");
+                    //anim.SetTrigger("Falling");
                 }
                 locomotionY -= gravity * Time.deltaTime;
-                anim.SetBool("Landed", false);
+                //anim.SetBool("Landed", false);
             }
         } else {
             //is still climbing altitude
             locomotionY -= gravity * Time.deltaTime;
-            anim.SetBool("Landed", false);
+            //anim.SetBool("Landed", false);
         }
 
     }
@@ -131,8 +132,11 @@ public class ThirdPersonMovement : CharacterMovement
 
     public virtual void AimOrTarget(InputAction.CallbackContext context) {
         if(context.performed) {
-            Debug.Log(context.ReadValue<float>());
+            //Debug.Log(context.ReadValue<float>());
             aim = context.ReadValue<float>();
+            if(aim == 1f) {
+                transform.rotation = Quaternion.Euler(0f, cameraController.transform.eulerAngles.y, 0f);
+            }
         }
     }
 
@@ -144,22 +148,22 @@ public class ThirdPersonMovement : CharacterMovement
         anim.SetFloat("Aiming", aim);
         anim.SetBool("InCombat", inCombat);
 
-        if((stats.status & StatusEffect.Stunned) != 0) {
-            anim.SetBool("Stunned", true);
-        } else {
-            anim.SetBool("Stunned", false);
-        }
-        if((stats.status & StatusEffect.Injured) != 0) {
-            anim.SetBool("Injured", true);
-        } else {
-            anim.SetBool("Injured", false);
-        }
+        //if((stats.status & StatusEffect.Stunned) != 0) {
+        //    anim.SetBool("Stunned", true);
+        //} else {
+        //    anim.SetBool("Stunned", false);
+        //}
+        //if((stats.status & StatusEffect.Injured) != 0) {
+        //    anim.SetBool("Injured", true);
+        //} else {
+        //    anim.SetBool("Injured", false);
+        //}
 
-        if((stats.status & StatusEffect.Frozen) != 0) {
-            anim.SetFloat("AnimationSpeedMultiplier", 0f);
-        } else {
-            anim.SetFloat("AnimationSpeedMultiplier", 1f);
-        }
+        //if((stats.status & StatusEffect.Frozen) != 0) {
+        //    anim.SetFloat("AnimationSpeedMultiplier", 0f);
+        //} else {
+        //    anim.SetFloat("AnimationSpeedMultiplier", 1f);
+        //}
     }
     
 }
