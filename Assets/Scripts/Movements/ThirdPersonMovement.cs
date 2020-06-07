@@ -82,6 +82,14 @@ public class ThirdPersonMovement : CharacterMovement
         }
     }
 
+    public override void RotationOverridenFromSkills() {
+        if(direction.magnitude > 0f) {
+            correctedDirection = cameraController.transform.rotation * new Vector3(direction.x, 0f, direction.y);
+            transform.LookAt(transform.position + correctedDirection);
+        } else {
+            correctedDirection = Vector3.zero;
+        }
+    }
     public override void Jump() {
         if(locomotionY <= 0f) {
             //is falling

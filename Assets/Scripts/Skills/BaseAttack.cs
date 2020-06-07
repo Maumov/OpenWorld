@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class FireMageAttack : Skill
+public class BaseAttack : Skill
 {
     public float BaseDamage = 10f;
     public float missileSpeed = 5f;
@@ -11,11 +10,11 @@ public class FireMageAttack : Skill
 
     public GameObject missilePrefab;
     public Transform spawnPosition;
-    FireMage fireMage;
+    ThirdPersonMovement baseMovement;
 
     public override void Start() {
         //base.Start();
-        //fireMage = GetComponentInParent<FireMage>();
+        baseMovement = GetComponent<ThirdPersonMovement>();
         stats = GetComponent<Stats>();
         anim = GetComponent<Animator>();
     }
@@ -23,7 +22,7 @@ public class FireMageAttack : Skill
         if(!stats.isAlive) {
             return;
         }
-        
+
         if(context.performed) {
             buttonPressed = context.ReadValue<float>();
             if(canUseSkill() && !OnCooldown()) {
@@ -38,12 +37,12 @@ public class FireMageAttack : Skill
     public override void Update() {
         base.Update();
         if(anim.GetCurrentAnimatorStateInfo(0).IsTag("Basic Attack")) {
-            fireMage.RotationOverridenFromSkills();
+            baseMovement.RotationOverridenFromSkills();
         }
 
     }
     public override void ExecuteEnd() {
-        
+
         FinishEffect();
     }
 
@@ -59,5 +58,5 @@ public class FireMageAttack : Skill
         missile.GetComponent<Missile>().stats = stats;
     }
 
-    
+
 }

@@ -26590,7 +26590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4749469443023686566}
   - component: {fileID: 4749469443013778860}
-  - component: {fileID: 6797104686414627323}
+  - component: {fileID: 7131437287546095253}
   - component: {fileID: 7862691197110547569}
   - component: {fileID: 8691787111287138780}
   - component: {fileID: 957203494179186420}
@@ -26598,6 +26598,7 @@ GameObject:
   - component: {fileID: 1170324424713889462}
   - component: {fileID: 6106680667303647108}
   - component: {fileID: 7570782056212516523}
+  - component: {fileID: 8960789126956539459}
   m_Layer: 0
   m_Name: CharacterBaseThirdPerson
   m_TagString: Player
@@ -26642,7 +26643,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6797104686414627323
+--- !u!114 &7131437287546095253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26651,7 +26652,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4749469443023424688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927655609c3bedc4cab86c3c4a1dfb84, type: 3}
+  m_Script: {fileID: 11500000, guid: ed30d3158aea18543b64753efc072530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7862691197110547569
@@ -26996,7 +26997,18 @@ MonoBehaviour:
     m_ActionId: 47a1f4e1-57b9-43f1-9754-136ccbe76f9f
     m_ActionName: ThirdPerson/Look[/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8960789126956539459}
+        m_MethodName: ButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1c49c170-96ed-4e0f-9612-5c7de4f8ad84
     m_ActionName: ThirdPerson/Attack[/Mouse/leftButton,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
@@ -27139,6 +27151,32 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &8960789126956539459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749469443023424688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28347e88c4049b94fafe65b417ea4163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  cooldownRemaining: 0
+  buttonPressed: 0
+  animation1: 
+  animation2: 
+  animation3: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  baseParticleSystem: {fileID: 0}
+  BaseDamage: 10
+  missileSpeed: 5
+  missilePrefab: {fileID: 0}
+  spawnPosition: {fileID: 0}
 --- !u!1 &4883007267381436981
 GameObject:
   m_ObjectHideFlags: 0
