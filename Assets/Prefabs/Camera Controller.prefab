@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409f854d72a9d3f4b952585c3b17fd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeLook: {fileID: 0}
-  target: {fileID: 0}
-  cameraPosition: {x: 0, y: -9, z: 4}
+  isAiming: 0
+  aimLayerMask:
+    serializedVersion: 2
+    m_Bits: 64512

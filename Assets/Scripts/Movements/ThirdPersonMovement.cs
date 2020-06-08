@@ -8,7 +8,7 @@ public class ThirdPersonMovement : CharacterMovement
     public CinemachineStateDrivenCamera freeLook;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    float aim;
+    public float aim;
 
     CinemachineFreeLook fl;
     Vector2 direction2;

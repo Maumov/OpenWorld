@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //public GameObject target;
-    //public Vector3 cameraPosition;
-    //// Start is called before the first frame update
-    //void Start() {
-    //    findTarget();
-    //}
+    
+    public bool isAiming;
+    public LayerMask aimLayerMask;
 
-    //// Update is called once per frame
-    //void Update() {
-    //    if(target != null) {
-    //        transform.position = target.transform.position - cameraPosition;
-    //    } else {
-    //        findTarget();
-    //    }
-    //}
+    //public Transform spellSpawnPosition;
 
-    //void findTarget() {
+    public Vector3 aimingTargetPosition() {
 
-    //    CharacterSetup t = FindObjectOfType<CharacterSetup>();
-    //    if(t != null) {
-    //        target = t.gameObject;
-    //    }
-    //}
+        Ray ray = new Ray();
+        ray.origin = transform.position;
+        ray.direction = transform.forward;
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, 1000f, aimLayerMask)) {
+            return hit.point;
+        } else {
+            return transform.position + (transform.forward * 100f);
+        }
+
+    }
+
 }

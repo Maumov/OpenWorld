@@ -12,9 +12,11 @@ public class BaseAttack : Skill
     public Transform spawnPosition;
     ThirdPersonMovement baseMovement;
 
+    CameraController cameraController;
     public override void Start() {
         //base.Start();
         baseMovement = GetComponent<ThirdPersonMovement>();
+        cameraController = FindObjectOfType<CameraController>();
         stats = GetComponent<Stats>();
         anim = GetComponent<Animator>();
     }
@@ -36,9 +38,9 @@ public class BaseAttack : Skill
 
     public override void Update() {
         base.Update();
-        if(anim.GetCurrentAnimatorStateInfo(0).IsTag("Basic Attack")) {
-            baseMovement.RotationOverridenFromSkills();
-        }
+        //if(anim.GetCurrentAnimatorStateInfo(0).IsTag("Basic Attack")) {
+        //    baseMovement.RotationOverridenFromSkills();
+        //}
 
     }
     public override void ExecuteEnd() {
@@ -53,10 +55,13 @@ public class BaseAttack : Skill
 
     public override void FinishEffect() {
         GameObject missile = Instantiate(missilePrefab, spawnPosition.position, spawnPosition.rotation);
+        Vector3 dir = cameraController.aimingTargetPosition();
+        if(baseMovement.aim == 1f) {
+            missile.transform.LookAt(dir);
+        }
         missile.GetComponent<Missile>().damage = BaseDamage + stats.currentDamage;
         missile.GetComponent<Missile>().movementSpeed = missileSpeed;
         missile.GetComponent<Missile>().stats = stats;
     }
-
 
 }

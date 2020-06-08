@@ -15,7 +15,7 @@ public class FireMageAttack : Skill
 
     public override void Start() {
         //base.Start();
-        //fireMage = GetComponentInParent<FireMage>();
+        fireMage = GetComponentInParent<FireMage>();
         stats = GetComponent<Stats>();
         anim = GetComponent<Animator>();
     }
