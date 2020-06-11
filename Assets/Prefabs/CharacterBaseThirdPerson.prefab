@@ -27135,6 +27135,8 @@ MonoBehaviour:
   gravity: 20
   freeLook: {fileID: 0}
   turnSmoothTime: 0.1
+  aim: 0
+  isAiming: 0
 --- !u!208 &7570782056212516523
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -27163,7 +27165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28347e88c4049b94fafe65b417ea4163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.3
   cooldownRemaining: 0
   buttonPressed: 0
   animation1: 
@@ -27175,8 +27177,9 @@ MonoBehaviour:
   baseParticleSystem: {fileID: 0}
   BaseDamage: 10
   missileSpeed: 5
-  missilePrefab: {fileID: 0}
-  spawnPosition: {fileID: 0}
+  missilePrefab: {fileID: 7652379052061020122, guid: 0eedd119023ccb14e9cffd2b718fe262,
+    type: 3}
+  spawnPosition: {fileID: 1110375076017751441}
 --- !u!1 &4883007267381436981
 GameObject:
   m_ObjectHideFlags: 0
