@@ -7,6 +7,7 @@ public class CineMachineEvents : MonoBehaviour
 {
     public Cinemachine.CinemachineStateDrivenCamera stateDriven;
     public Cinemachine.CinemachineFreeLook freeLook;
+    ThirdPersonMovement player;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,25 @@ public class CineMachineEvents : MonoBehaviour
     }
 
     public void StartMain() {
-        freeLook.m_YAxis.Value = 0.5f;
+        if(player == null) {
+            GetPlayer();
+        }
+        CenterYAxis();
+        player.isAiming = false;
     }
 
     public void StartAim() {
+        if(player == null) {
+            GetPlayer();
+        }
+        CenterYAxis();
+        player.isAiming = true;
+    }
+
+    public void CenterYAxis() {
         freeLook.m_YAxis.Value = 0.5f;
+    }
+    public void GetPlayer() {
+        player = stateDriven.m_LookAt.gameObject.GetComponent<ThirdPersonMovement>();
     }
 }

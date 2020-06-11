@@ -53,7 +53,7 @@ public class ThirdPersonMovement : CharacterMovement
         if(!stats.isAlive) {
             return;
         }
-        if(aim == 0f) {
+        if(!isAiming) {
             if(direction.magnitude > 0f) {
                 float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + cameraController.transform.eulerAngles.y;
 
@@ -138,15 +138,33 @@ public class ThirdPersonMovement : CharacterMovement
         //characterController.Move(finalDirection * Time.deltaTime);
     }
 
+    
+    //bool aimInCooldown;
+    public bool isAiming;
     public virtual void AimOrTarget(InputAction.CallbackContext context) {
         if(context.performed) {
             //Debug.Log(context.ReadValue<float>());
-            aim = context.ReadValue<float>();
-            if(aim == 1f) {
-                transform.rotation = Quaternion.Euler(0f, cameraController.transform.eulerAngles.y, 0f);
-            }
+      //      if(!aimInCooldown) {
+                aim = context.ReadValue<float>();
+                if(aim == 1f) {
+                    transform.rotation = Quaternion.Euler(0f, cameraController.transform.eulerAngles.y, 0f);
+        //            isAiming = true;
+      //          } else {
+          //          if(isAiming) {
+            //            aimInCooldown = true;
+              //          Invoke("ResetAimCooldown", 1f);
+                //        isAiming = false;
+                  //  }
+                }
+          //  }
+            
         }
     }
+
+    //void ResetAimCooldown() {
+     //   aimInCooldown = false;
+    //}
+
 
     public override void SetAnimatorValues() {
         anim.SetFloat("Speed", direction.magnitude);
