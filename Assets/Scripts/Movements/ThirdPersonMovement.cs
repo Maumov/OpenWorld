@@ -12,6 +12,7 @@ public class ThirdPersonMovement : CharacterMovement
 
     CinemachineFreeLook fl;
     Vector2 direction2;
+    Vector3 direction3;
     public override void Start() {
         anim = GetComponentInChildren<Animator>();
         stats = GetComponent<Stats>();
@@ -25,6 +26,7 @@ public class ThirdPersonMovement : CharacterMovement
     public override void LeftJoystick(InputAction.CallbackContext context) {
         direction = context.ReadValue<Vector2>();
         direction = Vector3.ClampMagnitude(direction, 1f);
+        direction3 = new Vector3(direction.x, 0f, direction.y);
     }
     
     public void RightJoyStick(InputAction.CallbackContext context) {
@@ -65,19 +67,25 @@ public class ThirdPersonMovement : CharacterMovement
                 //transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
                 correctedDirection = transform.forward;
             } else {
-                correctedDirection = Vector3.zero;
+                correctedDirection = transform.forward;
             }
 
         } else {
             transform.Rotate(0f, direction2.x * 300f * Time.deltaTime, 0f);
+            correctedDirection = transform.forward;
         }
     }
     public override void Move() {
         if(!stats.isAlive || ((stats.status & StatusEffect.Frozen) != 0)) {
             return;
         }
-        if(direction.magnitude > 0f) {
-            locomotionDirection = correctedDirection * (stats.currentMovement) * anim.GetFloat("MovementSpeed");
+        if(direction3.magnitude > 0f) {
+            if(!isAiming) {
+                locomotionDirection = correctedDirection * (stats.currentMovement) * anim.GetFloat("MovementSpeed");
+            } else {
+                locomotionDirection = transform.rotation * direction3 * (stats.currentMovement) * anim.GetFloat("MovementSpeed");
+            }
+            
         } else {
             locomotionDirection = Vector3.zero;
         }
@@ -162,7 +170,7 @@ public class ThirdPersonMovement : CharacterMovement
             finalDirection = new Vector3(locomotionDirection.x, 0f, locomotionDirection.z);
         }
         finalDirection.y = locomotionY;
-        Debug.Log(finalDirection);
+      //  Debug.Log(finalDirection);
         characterController.Move(finalDirection * Time.deltaTime);
     }
 
