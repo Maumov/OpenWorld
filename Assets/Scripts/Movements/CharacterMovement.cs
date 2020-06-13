@@ -191,11 +191,15 @@ public class CharacterMovement : MonoBehaviour
     public bool isGrounded() {
         //RaycastHit hit;
         //float maxDistance = 0.1f;
-        if(Physics.CheckBox(transform.position, new Vector3(0.5f,0.1f,0.5f), transform.rotation, groundedLayerMask)) {
+       
+
+        if(Physics.CheckSphere(transform.position + new Vector3(0f,0.3f,0f),0.4f,groundedLayerMask)) {
+        //}
+        //if(Physics.CheckBox(transform.position, new Vector3(0.5f,0.1f,0.5f), transform.rotation, groundedLayerMask)) {
             return true;
         } else {
             return false;
         }
     }
-
+   
 }
