@@ -44,7 +44,7 @@ public class ThirdPersonMovement : CharacterMovement
         OutOfCombat();
         Rotate();
         Move();
-        Jump();
+        Jump2();
         Locomotion();
         SetAnimatorValues();
     }
@@ -63,6 +63,7 @@ public class ThirdPersonMovement : CharacterMovement
                 //Vector3 rotation = cameraController.transform.rotation * new Vector3(direction.x , 0f, direction.y);
 
                 //transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+                correctedDirection = transform.forward;
             } else {
                 correctedDirection = Vector3.zero;
             }
@@ -76,7 +77,7 @@ public class ThirdPersonMovement : CharacterMovement
             return;
         }
         if(direction.magnitude > 0f) {
-            locomotionDirection = correctedDirection * (stats.currentMovement);
+            locomotionDirection = correctedDirection * (stats.currentMovement) * anim.GetFloat("MovementSpeed");
         } else {
             locomotionDirection = Vector3.zero;
         }
@@ -90,7 +91,7 @@ public class ThirdPersonMovement : CharacterMovement
             correctedDirection = Vector3.zero;
         }
     }
-    public override void Jump() {
+    public void Jump2() {
         if(locomotionY <= 0f) {
             //is falling
             if(isGrounded()) {
@@ -107,7 +108,7 @@ public class ThirdPersonMovement : CharacterMovement
                     jump = 0;
                 } else {
                     if(anim.GetCurrentAnimatorStateInfo(0).IsName("Falling") && !anim.IsInTransition(0)) {
-                        //anim.SetTrigger("Landed");
+                        anim.SetTrigger("Landed");
                     }
 
                 }
@@ -127,6 +128,32 @@ public class ThirdPersonMovement : CharacterMovement
 
     }
 
+    public override void Jump() {
+        
+        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Falling")) {
+            if(isGrounded() && !anim.GetNextAnimatorStateInfo(0).IsName("Jump")) {
+                if(jump == 1f) {
+                    anim.SetTrigger("Jump");
+                    jump = 0f;
+                }
+            }
+            if(!isGrounded() && !anim.GetNextAnimatorStateInfo(0).IsName("Jump") ) {
+                anim.SetBool("Landed",false);
+                anim.SetTrigger("Falling");
+            } else {
+                anim.SetBool("Falling", false);
+            }
+        }
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")) {
+            anim.SetBool("Jump", false);
+            jump = 0f;
+        }
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Falling") && isGrounded()) {
+            anim.SetTrigger("Landed");
+        }
+    }
+
+
     public override void Locomotion() {
         Vector3 finalDirection = Vector3.zero;
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded") && !anim.IsInTransition(0)) {
@@ -135,7 +162,8 @@ public class ThirdPersonMovement : CharacterMovement
             finalDirection = new Vector3(locomotionDirection.x, 0f, locomotionDirection.z);
         }
         finalDirection.y = locomotionY;
-        //characterController.Move(finalDirection * Time.deltaTime);
+        Debug.Log(finalDirection);
+        characterController.Move(finalDirection * Time.deltaTime);
     }
 
     

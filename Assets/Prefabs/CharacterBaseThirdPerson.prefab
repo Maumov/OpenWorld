@@ -27075,7 +27075,7 @@ MonoBehaviour:
   baseHitPoints: 100
   baseHPRegen: 0
   baseDamage: 10
-  baseMovement: 0
+  baseMovement: 1
   baseCooldownSpeed: 0
   currentCooldownSpeed: 0
   currentHPRegen: 0
