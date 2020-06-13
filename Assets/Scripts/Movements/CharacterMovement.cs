@@ -175,7 +175,7 @@ public class CharacterMovement : MonoBehaviour
             anim.SetFloat("AnimationSpeedMultiplier", 1f);
         }
     }
-    public bool isGrounded() {
+    public bool isGrounded2() {
         //RaycastHit hit;
         Ray ray = new Ray();
         ray.origin = transform.position;
@@ -187,4 +187,15 @@ public class CharacterMovement : MonoBehaviour
             return false;
         }
     }
+    public LayerMask groundedLayerMask;
+    public bool isGrounded() {
+        //RaycastHit hit;
+        //float maxDistance = 0.1f;
+        if(Physics.CheckBox(transform.position, new Vector3(0.5f,0.1f,0.5f), transform.rotation, groundedLayerMask)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

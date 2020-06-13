@@ -27133,6 +27133,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   jumpSpeed: 10
   gravity: 20
+  groundedLayerMask:
+    serializedVersion: 2
+    m_Bits: 55296
   freeLook: {fileID: 0}
   turnSmoothTime: 0.1
   aim: 0
