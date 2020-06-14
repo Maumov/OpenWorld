@@ -43,7 +43,7 @@ public class ThirdPersonMovement : CharacterMovement
         //direction2 = Vector2.zero;
     }
     public override void Update() {
-        OutOfCombat();
+        //OutOfCombat();
         Rotate();
         Move();
         Jump2();
@@ -105,14 +105,25 @@ public class ThirdPersonMovement : CharacterMovement
             if(isGrounded()) {
                 //has floor under him
                 locomotionY = -gravity * Time.deltaTime;
-                if(jump == 1) {
-                    if(anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion") ||
+                if(jump == 1 ) {
+                    if(inCombat) {
+                        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion") ||
                         anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion_inCombat") ||
                         anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
-                        locomotionY = jumpSpeed;
-                        anim.SetTrigger("Jump");
-                        //anim.SetBool("Landed", false);
+                            //locomotionY = jumpSpeed;
+                            anim.SetTrigger("Jump");
+                            //anim.SetBool("Landed", false);
+                        }
+                    } else {
+                        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion") ||
+                            anim.GetCurrentAnimatorStateInfo(0).IsName("Locomotion_inCombat") ||
+                            anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
+                            locomotionY = jumpSpeed;
+                            anim.SetTrigger("Jump");
+                            //anim.SetBool("Landed", false);
+                        }
                     }
+                    
                     jump = 0;
                 } else {
                     if(anim.GetCurrentAnimatorStateInfo(0).IsName("Falling") && !anim.IsInTransition(0)) {
@@ -182,16 +193,21 @@ public class ThirdPersonMovement : CharacterMovement
             //Debug.Log(context.ReadValue<float>());
       //      if(!aimInCooldown) {
                 aim = context.ReadValue<float>();
-                if(aim == 1f) {
-                    transform.rotation = Quaternion.Euler(0f, cameraController.transform.eulerAngles.y, 0f);
-        //            isAiming = true;
-      //          } else {
-          //          if(isAiming) {
-            //            aimInCooldown = true;
-              //          Invoke("ResetAimCooldown", 1f);
+            Debug.Log(aim);
+            if(aim == 1f) {
+                transform.rotation = Quaternion.Euler(0f, cameraController.transform.eulerAngles.y, 0f);
+                //            isAiming = true;
+                //          } else {
+                //          if(isAiming) {
+                //            aimInCooldown = true;
+                //          Invoke("ResetAimCooldown", 1f);
                 //        isAiming = false;
-                  //  }
-                }
+                //  }
+                inCombat = true;
+            } else {
+                //anim.SetBool("InCombat", false);
+                inCombat = false;
+            }
           //  }
             
         }

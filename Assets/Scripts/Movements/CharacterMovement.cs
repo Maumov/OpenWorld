@@ -133,7 +133,7 @@ public class CharacterMovement : MonoBehaviour
 
     public virtual void JumpButton(InputAction.CallbackContext context) {
         if(context.performed) {
-            Debug.Log(context.ReadValue<float>());
+    //        Debug.Log(context.ReadValue<float>());
             jump = context.ReadValue<float>();
         }
     }
